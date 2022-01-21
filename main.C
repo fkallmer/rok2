@@ -19,6 +19,9 @@
 #include "SHA256.H"
 #include "TASK1.H"
 
+#include <stdio.h>
+#include <string.h>
+
 
 using namespace std;
 using namespace TASK1;
@@ -49,12 +52,16 @@ int main(){
 	MyBlackBoxSafe b(4,4);
 
 //	cout << "Password erraten?: "<<b.input(b.pwd_) << endl;
-	string s;
-	char symbo[4] = {'A','B','C','D'};
-	char pwd [5];
-	int szs = sizeof(symbo);
-	int szp = sizeof(pwd);
 
+	/*
+	string s;
+	char symbo[5] = "ABCD";
+	char pwd [5];
+	int szs = strlen(symbo);
+	std::cout<<szs<<std::endl;
+	//int szp = strlen(pwd);
+	//std::cout<<symbo[1];
+	int szp =5;
 
 	int g = pow(szs,szp);
 	for(int i = 0; i<g;i++)
@@ -71,14 +78,31 @@ int main(){
 		cout<<"STRING: (" <<i+1<<") "<<s<<endl;
 
 	}
+	*/
+	string s;
+		char symbo[4] = {'A','B','C','D'};
+		char pwd [9];
+		int szs = sizeof(symbo);
+		int szp = sizeof(pwd);
+		//std::cout<<symbo[1];
+		int g = pow(szs,szp);
 
 
+		//msg="pwd[]";
+		//pwd= string("");
 
+		for(int i = 0; i<g;i++)
+		{
+			for (int e = 0; e<sizeof(pwd);e++)
+			{
+				int o = pow(szs,szp-1-e);
+				int mod = (i/o)%szs;
+				pwd[e]= symbo[mod];
 
+			}
+			s = string(pwd);
+			std::cout<<"s: "<<s<<std::endl;
+		}
 
     return 0;
 }
-
-
-
-
