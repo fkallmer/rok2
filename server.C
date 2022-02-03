@@ -41,26 +41,31 @@ int main(){
 
 string MyServer::myResponse(string inputStr){
 	char pwd[101];
-	int pwdLength = 4, numberSymbols=4;
+	int pwdLength, numberSymbols;
 	string response;
 
-
+	if(inputStr.compare("")==0){
+		return string("");
+	}
 	if(sscanf(inputStr.c_str(),"makepwd[%i,%i]",&pwdLength,&numberSymbols)){
 		if(pwdLength < 4){
-			std::cout <<"Mindest Passwordtlänge ist gleich 4!"<<std::endl;
-			response="Mindest Passwordtlänge ist gleich 4!";
+			std::cout <<"Passlänge zu kurz! (min. 4)"<<std::endl;
+			response="Passlänge zu kurz! (min. 4)";
+			return response;
 		}else if(pwdLength > 99){
-			std::cout <<"Maximale Passwortlänge überschritten (max. 100)!"<<std::endl;
-			response="Maximale Passwortlänge überschritten (max. 100)!";
-		}else if(numberSymbols <= 0 || numberSymbols >= 63){
-			std::cout <<"Fehler! Anzahl der Symbole muss zwischen 1 und 62 sein!"<<std::endl;
-			response="Fehler! Anzahl der Symbole muss zwischen 1 und 62 sein!";
+			std::cout <<"Passlänge zu groß! (max. 100)"<<std::endl;
+			response="Passlänge zu groß! (max. 100)";
+			return response;
+		}else if(numberSymbols < 1 || numberSymbols > 62){
+			std::cout <<"Alphlänge falsch! (1-62)"<<std::endl;
+			response="Alphlänge falsch! (1-62)";
+			return response;
 		}
 		delete box;
 		box=new TASK1::BlackBoxSafe(pwdLength,numberSymbols);
+		response="Pwd erstellt";
 
 	}else if(sscanf(inputStr.c_str(),"pwd[%s]",pwd)){
-
 		response=box->input(pwd);
 
 
