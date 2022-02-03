@@ -33,9 +33,7 @@ BlackBoxSafe::BlackBoxSafe(int pwdLength, int symbSetSize): BlackBoxUnsafe(pwdLe
 }
 
 string BlackBoxSafe::input(string strPwd){
-	std::cout<<"input clear: "<<std::endl;
 	strPwd=sha256(strPwd);
-	std::cout<<"input sha: "<<strPwd<<std::endl;
 	if(strPwd.compare(pwd_) == 0){
 		return string("ACCESS ACCEPTED");
 	}
