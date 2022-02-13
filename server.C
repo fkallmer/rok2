@@ -74,33 +74,6 @@ string MyServer::myResponse(string inputStr){
 	}
 
 	return response;
-	/*
-	if(inputStr.compare(0,4,"eins") == 0){
-		return string("1");
-	}else if(inputStr.compare(0,4,"zwei") == 0){
-		return string("2");
-	}else if(inputStr.compare(0,4,"drei") == 0){
-		return string("3");
-	}else if(inputStr.compare(0,4,"vier") == 0){
-		return string("4");
-	}else if(inputStr.compare(0,5,"fuenf") == 0){
-		return string("5");
-	}else if(inputStr.compare(0,5,"sechs") == 0){
-		return string("6");
-	}else if(inputStr.compare(0,6,"sieben") == 0){
-		return string("7");
-	}else if(inputStr.compare(0,4,"acht") == 0){
-		return string("8");
-	}else if(inputStr.compare(0,4,"neun") == 0){
-		return string("9");
-	}else if(inputStr.compare(0,4,"null") == 0){
-		return string("0");
-	}else{
-		return string("UC");
-	}
-*/
-
-
 }
 
 
